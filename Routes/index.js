@@ -1,10 +1,10 @@
 const express = require('express'); // INSTANCIA DO EXPRESS
 const router = express.Router(); // INSTANCIA DA ROTA
+const auth = require('../middlewares/auth')
 
-router.get('/', function (req, res) { // USANDO FUNCTION
-    let obj = req.query;
-    obj.nome
-    return res.send({message: `Tudo ok com o metodo GET! ${obj.nome} da rota index`});
+router.get('/', auth, (req, res) => { // USANDO FUNCTION
+    console.log(res.locals.auth_data);
+    return res.send({message: 'informação sigilosa'});
 });
 
 router.post('/', (req, res) =>{ // USANDO OUTRA FORMA DE FUNTION
