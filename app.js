@@ -3,9 +3,10 @@ const express = require('express'); //EXPRESS É UM FRAMEWORK PARA CRIAÇÃO DE 
 const app = express();
 const mongoose = require('mongoose'); // AJUDA A ORGANIZAR O CÓDIGO NA ARQUITETURA MVC
 const bodyParser = require('body-parser'); // PASSA JSON PARA OBJETO
+const config = require('./config/config');
 
 //STRING DE CONEXÃO
-const url = 'mongodb+srv://usuario123:c3r2e7u3@clusterapi-yq3cq.mongodb.net/test?retryWrites=true&w=majority';
+const url = config.bd_string;
 const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true};
 
 mongoose.connect(url, options);
